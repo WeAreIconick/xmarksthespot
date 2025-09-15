@@ -1,0 +1,82 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "telex/block-x-marks-the-spot",
+  "version": "0.1.0",
+  "title": "X Marks the Spot",
+  "category": "media",
+  "icon": "location",
+  "description": "Transform static images into engaging, clickable experiences with interactive hotspots.",
+  "example": {
+    "attributes": {
+      "imageUrl": "https://via.placeholder.com/800x600/cccccc/666666?text=Interactive+Image",
+      "hotspots": [
+        {
+          "id": 1,
+          "x": 25,
+          "y": 30,
+          "title": "Product Showcase",
+          "content": "Click hotspots to reveal hidden content, product details, or additional media.",
+          "type": "tooltip"
+        },
+        {
+          "id": 2,
+          "x": 75,
+          "y": 60,
+          "title": "Learn More",
+          "content": "Perfect for e-commerce, education, real estate, and interactive storytelling.",
+          "type": "tooltip"
+        }
+      ]
+    }
+  },
+  "attributes": {
+    "imageId": {
+      "type": "number"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "imageAlt": {
+      "type": "string",
+      "default": ""
+    },
+    "hotspots": {
+      "type": "array",
+      "default": []
+    },
+    "hotspotStyle": {
+      "type": "string",
+      "default": "pulse-dot"
+    },
+    "hotspotColor": {
+      "type": "string",
+      "default": "#007cba"
+    },
+    "hotspotSize": {
+      "type": "number",
+      "default": 20
+    },
+    "animation": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": [
+      "wide",
+      "full"
+    ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "textdomain": "x-marks-the-spot-block-wp",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
+}

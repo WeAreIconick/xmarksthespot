@@ -1,0 +1,235 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ */
+
+.wp-block-telex-block-x-marks-the-spot {
+	position: relative;
+	
+	.interactive-hotspots-container {
+		position: relative;
+		
+		.interactive-hotspots-image-wrapper {
+			position: relative;
+			display: inline-block;
+			max-width: 100%;
+			
+			img {
+				max-width: 100%;
+				height: auto;
+				display: block;
+			}
+		}
+		
+		.interactive-hotspots-help {
+			margin-top: 1rem;
+			font-style: italic;
+			color: #666;
+			text-align: center;
+		}
+	}
+	
+	.interactive-hotspots-placeholder {
+		text-align: center;
+		padding: 2rem;
+		border: 2px dashed #ddd;
+		border-radius: 8px;
+		
+		p {
+			margin-top: 1rem;
+			color: #666;
+		}
+	}
+}
+
+// Hotspot styles with viewport-based scaling
+.hotspot {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	cursor: pointer;
+	border: 2px solid white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: clamp(10px, 2.5vw, 14px);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+	
+	&:hover {
+		transform: translate(-50%, -50%) scale(1.1);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+	}
+	
+	&.pulse-dot {
+		border-radius: 50%;
+		animation: hotspot-pulse 2s infinite;
+	}
+	
+	&.circle {
+		border-radius: 50%;
+	}
+	
+	&.square {
+		border-radius: 0;
+	}
+	
+	&.plus::before {
+		content: '+';
+	}
+}
+
+@keyframes hotspot-pulse {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+	50% {
+		transform: translate(-50%, -50%) scale(1.2);
+		opacity: 0.7;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+}
+
+// Modal styles
+.hotspot-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	
+	.hotspot-modal-content {
+		background: white;
+		padding: 2rem;
+		border-radius: 8px;
+		max-width: 500px;
+		max-height: 80vh;
+		overflow-y: auto;
+		position: relative;
+		
+		.hotspot-modal-close {
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			background: none;
+			border: none;
+			font-size: 24px;
+			cursor: pointer;
+			line-height: 1;
+			color: #666;
+			
+			&:hover {
+				color: #000;
+			}
+		}
+		
+		.hotspot-modal-title {
+			margin: 0 0 1rem 0;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+		
+		.hotspot-modal-body {
+			line-height: 1.6;
+		}
+	}
+}
+
+// Tooltip styles with closer positioning
+.hotspot-tooltip {
+	position: absolute;
+	background: rgba(0, 0, 0, 0.9);
+	color: white;
+	padding: 0.5rem 0.75rem;
+	border-radius: 4px;
+	font-size: clamp(11px, 2vw, 13px);
+	line-height: 1.3;
+	max-width: clamp(120px, 40vw, 180px);
+	z-index: 1000;
+	pointer-events: none;
+	word-wrap: break-word;
+	
+	&::after {
+		content: '';
+		position: absolute;
+		left: 50%;
+		top: 100%;
+		transform: translateX(-50%);
+		border: 4px solid transparent;
+		border-top-color: rgba(0, 0, 0, 0.9);
+	}
+	
+	&.below {
+		&::after {
+			top: -8px;
+			border-top-color: transparent;
+			border-bottom-color: rgba(0, 0, 0, 0.9);
+		}
+	}
+}
+
+// Inline expansion styles
+.hotspot-inline-content {
+	margin-top: 1rem;
+	padding: 1rem;
+	background: #f8f9fa;
+	border-radius: 8px;
+	border-left: 4px solid #007cba;
+	
+	.hotspot-inline-title {
+		font-weight: bold;
+		margin-bottom: 0.5rem;
+	}
+}
+
+// Responsive design with viewport-based scaling
+@media (max-width: 768px) {
+	.hotspot {
+		// Use CSS clamp for responsive sizing based on viewport width
+		width: clamp(16px, 4vw, 24px) !important;
+		height: clamp(16px, 4vw, 24px) !important;
+		font-size: clamp(9px, 2vw, 12px) !important;
+		border-width: 1px;
+	}
+	
+	.hotspot-modal .hotspot-modal-content {
+		margin: 1rem;
+		padding: 1.5rem;
+		max-width: none;
+	}
+	
+	.hotspot-tooltip {
+		max-width: clamp(100px, 35vw, 140px);
+		font-size: clamp(10px, 2vw, 12px);
+		padding: 0.4rem 0.6rem;
+	}
+}
+
+@media (max-width: 480px) {
+	.hotspot {
+		// Even smaller on very small screens
+		width: clamp(14px, 3.5vw, 20px) !important;
+		height: clamp(14px, 3.5vw, 20px) !important;
+		font-size: clamp(8px, 1.8vw, 11px) !important;
+	}
+}
+
+@media (min-width: 1200px) {
+	.hotspot {
+		// Prevent hotspots from getting too large on big screens
+		max-width: 28px;
+		max-height: 28px;
+		font-size: 14px;
+	}
+}
