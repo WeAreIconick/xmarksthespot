@@ -2,13 +2,14 @@
 /**
  * Plugin Name:       X Marks the Spot
  * Description:       Transform static images into engaging, clickable experiences with interactive hotspots.
- * Version:           0.1.0
- * Requires at least: 6.1
+ * Version:           1.0.0
+ * Requires at least: 6.0
  * Requires PHP:      7.4
- * Author:            WordPress Telex
+ * Author:      	  iconick
+ * Author URI:        https://iconick.io
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       x-marks-the-spot-block-wp
+ * Text Domain:       x-marks-the-spot-block
  *
  * @package XMarksTheSpot
  */
